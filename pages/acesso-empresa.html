@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso empresarial | ConectaDoações</title>
+    <link rel="stylesheet" href="../css/acesso.css">
+</head>
+
+<body>
+    <main class="access-page"><a class="brand" href="../index.html"><span>♥</span> ConectaDoações</a>
+        <section class="access-card">
+            <div class="access-heading"><span class="badge">⌂</span>
+                <p class="eyebrow">ÁREA EMPRESARIAL</p>
+                <h1 id="form-title">Crie sua conta</h1>
+                <p id="form-subtitle">Cadastre sua empresa para começar a fazer a diferença.</p>
+            </div>
+            <form id="access-form" data-type="empresa" novalidate>
+                <div id="register-only" class="field"><label for="nome">Nome da empresa</label><input id="nome"
+                        type="text" placeholder="Ex.: Empresa Solidária Ltda."></div>
+                <div class="field"><label for="documento">CNPJ</label><input id="documento" inputmode="numeric"
+                        maxlength="18" placeholder="00.000.000/0000-00" required></div>
+                <div class="field"><label for="email">E-mail empresarial</label><input id="email" type="email"
+                        placeholder="contato@empresa.com" required></div>
+                <div class="field"><label for="senha">Senha</label><input id="senha" type="password" minlength="6"
+                        placeholder="Mínimo de 6 caracteres" required></div><button id="submit-button"
+                    type="submit">Cadastrar empresa</button>
+            </form>
+            <p id="toggle-text" class="toggle">Já possui cadastro? <button type="button"
+                    id="toggle-mode">Entrar</button></p>
+            <p id="message" class="message" role="alert"></p>
+        </section>
+    </main>
+    <script src="../scripts/acesso.js"></script>
+</body>
+
+</html>
+
+
+

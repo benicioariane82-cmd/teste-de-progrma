@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas listas de espera | ConectaDoações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../styles.css">
+</head>
+<body data-area="waitlist" class="min-h-screen antialiased">
+<header class="workspace-header"><a class="brand" href="../index.html"><span class="brand-mark brand-symbol">♥</span><span class="brand-copy"><strong>ConectaDoações</strong><small>LISTA DE ESPERA</small></span></a><nav class="workspace-nav"><a href="../index.html">Portal</a><a href="catalogo.html">Catálogo</a><a href="pedidos.html">Meus pedidos</a><a href="ong.html">Área da ONG</a></nav><div class="workspace-user"><span id="account-name"></span><button id="logout-button" class="button-quiet hidden">Sair</button></div></header>
+<main class="workspace-main"><section class="workspace-heading"><div><p class="eyebrow">OPORTUNIDADES</p><h1>Minhas listas de espera</h1><p>Veja sua posição e acompanhe os itens que aguardam reposição.</p></div><a class="button button-outline" href="catalogo.html">Voltar ao catálogo</a></section><div id="waitlist-list" class="workspace-list"></div></main>
+<div class="toast-region" id="toast-region" aria-live="polite"></div><script src="../scripts/area.js"></script>
+</body></html>

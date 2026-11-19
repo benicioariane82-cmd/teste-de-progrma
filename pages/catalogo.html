@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de doações | ConectaDoações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../styles.css">
+</head>
+<body data-area="catalog" class="min-h-screen antialiased">
+<header class="workspace-header"><a class="brand" href="../index.html"><span class="brand-mark brand-symbol">♥</span><span class="brand-copy"><strong>ConectaDoações</strong><small>CATÁLOGO SOLIDÁRIO</small></span></a><nav class="workspace-nav"><a href="../index.html">Portal</a><a href="ong.html">Área da ONG</a><a href="pedidos.html">Meus pedidos</a><a href="lista-espera.html">Lista de espera</a></nav><div class="workspace-user"><span id="account-name"></span><button id="logout-button" class="button-quiet hidden">Sair</button></div></header>
+<main class="workspace-main"><section class="workspace-heading"><div><p class="eyebrow">CATÁLOGO EM TEMPO REAL</p><h1>Encontre uma doação</h1><p>Consulte a disponibilidade e solicite apoio às instituições parceiras.</p></div><a class="button button-outline" href="beneficiario.html">Acessar como beneficiário</a></section><div class="catalog-toolbar"><span class="catalog-meta"><i class="live-dot"></i> <span id="catalog-count"></span></span><label class="search-field"><span>⌕</span><input id="catalog-search" type="search" placeholder="Buscar item ou instituição" aria-label="Buscar item ou instituição"></label></div><div class="workspace-products product-grid" id="product-grid"></div><div class="catalog-empty hidden" id="catalog-empty">Nenhuma doação encontrada.</div></main>
+<div class="toast-region" id="toast-region" aria-live="polite"></div><script src="../scripts/area.js"></script>
+</body></html>

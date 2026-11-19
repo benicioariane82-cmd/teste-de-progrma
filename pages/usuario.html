@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso de usuário | ConectaDoações</title>
+    <link rel="stylesheet" href="../css/acesso.css">
+</head>
+<body>
+    <main class="access-page user-access">
+        <a class="brand" href="../index.html"><span>♥</span> ConectaDoações</a>
+        <section class="access-card">
+            <div class="access-heading">
+                <span class="badge">♡</span>
+                <p class="eyebrow">ÁREA DO USUÁRIO</p>
+                <h1 id="form-title">Entre na sua conta</h1>
+                <p id="form-subtitle">Acesse para reservar as doações disponíveis.</p>
+            </div>
+            <form id="access-form" data-type="usuario" novalidate>
+                <div id="register-only" class="field hidden">
+                    <label for="nome">Nome completo</label>
+                    <input id="nome" type="text" placeholder="Como devemos chamar você?">
+                </div>
+                <div class="field">
+                    <label for="documento">CPF</label>
+                    <input id="documento" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required>
+                </div>
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" placeholder="voce@email.com" required>
+                </div>
+                <div class="field">
+                    <label for="senha">Senha</label>
+                    <input id="senha" type="password" minlength="6" placeholder="Sua senha" required>
+                </div>
+                <button id="submit-button" type="submit">Entrar</button>
+            </form>
+            <p id="toggle-text" class="toggle">Ainda não possui cadastro? <button type="button" id="toggle-mode">Fazer cadastro</button></p>
+            <p id="message" class="message" role="alert"></p>
+        </section>
+    </main>
+    <script src="../scripts/acesso.js"></script>
+</body>
+</html>
+
+
+

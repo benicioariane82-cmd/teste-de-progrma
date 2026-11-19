@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Vouchers</title>
+   
+    <link rel="stylesheet" href="../css/validar.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span>🤝</span>
+                <h1>ConectaDoações</h1>
+            </a>
+            <nav>
+                <a href="../index.html" class="btn-voltar">Voltar ao Menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Balcão de Atendimento Digital</h2>
+        <p class="subtitle">Insira o código alfanumérico apresentado pelo beneficiário na entrega do suprimento.</p>
+
+        <div class="card">
+            <h3>🎫 Validar Código Token</h3>
+            <div class="form-group">
+                <input type="text" id="token-input" placeholder="EX: A7X9K2" maxlength="6">
+            </div>
+            <button id="btn-validar" class="btn">Confirmar e Dar Baixa</button>
+            
+            <div id="msg-validacao" class="msg-box"></div>
+        </div>
+    </main>
+
+    <!-- Vinculação do arquivo JavaScript exclusivo -->
+    <script src="../scripts/validar.js"></script>
+</body>
+</html>
+
+
+

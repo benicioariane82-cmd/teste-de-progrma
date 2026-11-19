@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área da ONG | ConectaDoações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script><link rel="stylesheet" href="../styles.css">
+</head>
+<body data-area="ong" class="min-h-screen antialiased">
+<header class="workspace-header"><a class="brand" href="../index.html"><span class="brand-mark brand-symbol">♥</span><span class="brand-copy"><strong>ConectaDoações</strong><small>ESPAÇO DAS ONGS</small></span></a><nav class="workspace-nav"><a href="../index.html">Portal</a><a href="catalogo.html">Catálogo público</a><a href="pedidos.html">Beneficiários</a></nav><div class="workspace-user"><span id="account-name"></span><button id="logout-button" class="button-quiet hidden">Sair</button></div></header>
+<main class="workspace-main">
+    <section class="workspace-heading"><div><p class="eyebrow">ÁREA DA INSTITUIÇÃO</p><h1>Gestão da sua ONG</h1><p>Estoque, solicitações e retiradas em um espaço exclusivo.</p></div><span class="workspace-mark">ONG</span></section>
+    <section class="workspace-auth" id="ong-auth"><div class="workspace-auth-copy"><p class="eyebrow">BEM-VINDA À REDE</p><h2>A sua instituição faz a diferença.</h2><p>Acesse o painel para publicar doações, acompanhar pedidos e confirmar entregas.</p><div class="demo-access"><strong>Acesso de demonstração</strong><br>Instituto Teko Porã<br>contato@tekopora.org · Teko2026!<br><br>Rede Acolhe<br>acolhe@rede.org · Acolhe2026!</div></div><div class="workspace-form-wrap"><div class="auth-switch"><button type="button" class="active" data-auth-mode="login">Entrar</button><button type="button" data-auth-mode="register">Cadastrar ONG</button></div><form id="ong-form" class="form-stack"></form></div></section>
+    <section class="workspace-panel hidden" id="ong-dashboard"><div class="workspace-panel-heading"><div><p class="eyebrow">PAINEL ADMINISTRATIVO</p><h2 id="ong-title"></h2><p id="ong-location"></p></div><span class="verified">✓ Instituição verificada</span></div><nav class="workspace-tabs" aria-label="Gestão ONG"><button data-ong-tab="orders">Pedidos pendentes</button><button data-ong-tab="stock">Estoque</button><button data-ong-tab="waitlist">Lista de espera</button><button data-ong-tab="validate">Validar voucher</button></nav><div id="ong-content"></div></section>
+</main><div class="toast-region" id="toast-region" aria-live="polite"></div><script src="../scripts/area.js"></script>
+</body></html>
