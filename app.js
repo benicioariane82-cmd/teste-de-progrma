@@ -37,10 +37,16 @@
             <div class="partner-location">⌖ ${escapeHTML(organization.city)}</div><p>${escapeHTML(organization.description)}</p></div>
         </article>`).join('');
     const menuButton = document.getElementById('mobile-menu-button');
+    const nav = document.getElementById('main-nav');
     menuButton?.addEventListener('click', () => {
-        const nav = document.getElementById('main-nav');
         const open = nav.classList.toggle('open');
         menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
         menuButton.textContent = open ? '×' : '☰';
     });
+    nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuButton?.setAttribute('aria-expanded', 'false');
+        if (menuButton) menuButton.textContent = '☰';
+    }));
 })();
