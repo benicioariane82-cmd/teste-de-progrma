@@ -67,22 +67,46 @@
         localStorage.removeItem(SESSION);
         location.href = '../index.html';
     }
-    function createSession(type, account) {
-        session = { type, id: account.id };
-        localStorage.setItem(SESSION, JSON.stringify(session));
-        persist();
-        if (type === 'ong') {
-            $('#ong-auth')?.classList.add('hidden');
-            $('#ong-dashboard')?.classList.remove('hidden');
-            if (new URLSearchParams(location.search).get('tab') === 'validation') $('#ong-content').dataset.active = 'validate';
-            renderUser();
-            renderOng();
-        } else {
-            const next = new URLSearchParams(location.search).get('next') || 'catalogo.html';
-            location.href = next;
-        }
-        toast('Acesso realizado com sucesso.');
+    function createSession(type, account, token) {
+    const accounts = type === 'ong'
+        ? data.organizations
+        : data.beneficiaries;
+
+    const existingIndex = accounts.findIndex(item => item.id === account.id);
+
+    if (existingIndex >= 0) {
+        accounts[existingIndex] = { ...accounts[existingIndex], ...account };
+    } else {
+        accounts.push({ ...account });
     }
+
+    session = { type, id: account.id };
+
+    localStorage.setItem(SESSION, JSON.stringify(session));
+
+    if (token) {
+        localStorage.setItem('conecta_api_token', token);
+    }
+
+    persist();
+
+    if (type === 'ong') {
+        $('#ong-auth')?.classList.add('hidden');
+        $('#ong-dashboard')?.classList.remove('hidden');
+
+        if (new URLSearchParams(location.search).get('tab') === 'validation') {
+            $('#ong-content').dataset.active = 'validate';
+        }
+
+        renderUser();
+        renderOng();
+    } else {
+        const next = new URLSearchParams(location.search).get('next') || 'catalogo.html';
+        location.href = next;
+    }
+
+    toast('Acesso realizado com sucesso.');
+}
     function redirectToBeneficiary() {
         location.href = `beneficiario.html?next=${encodeURIComponent(currentPage)}`;
     }
@@ -113,34 +137,72 @@
         }
         form.onsubmit = event => submitAuth(event, type, register);
     }
-    function submitAuth(event, type, register) {
-        event.preventDefault();
-        const values = new FormData(event.currentTarget);
-        const password = String(values.get('password') || '');
-        const email = String(values.get('email') || '').trim().toLowerCase();
-        if (register && password.length < 6) return toast('A senha precisa ter pelo menos 6 caracteres.');
-        if (register && type === 'ong') {
-            const cnpj = digits(values.get('cnpj'));
-            if (cnpj.length !== 14) return toast('Informe um CNPJ com 14 números.');
-            if (data.organizations.some(item => item.email.toLowerCase() === email || digits(item.cnpj) === cnpj)) return toast('Este e-mail ou CNPJ já está cadastrado.');
-            const account = { id: id('ong'), name: String(values.get('name')).trim(), cnpj, city: String(values.get('city')).trim(), email, password, description: 'Uma iniciativa local que fortalece a rede de cuidado da comunidade.', image: photos.community };
-            data.organizations.push(account);
-            return createSession(type, account);
-        }
+
+
+async function submitAuth(event, type, register) {
+    event.preventDefault();
+
+    const values = new FormData(event.currentTarget);
+    const password = String(values.get('password') || '');
+
+    const payload = {
+        type,
+        password
+    };
+
+    if (type === 'beneficiary') {
+        payload.cpf = digits(values.get('cpf'));
+
         if (register) {
-            const cpf = digits(values.get('cpf'));
-            if (cpf.length !== 11) return toast('Informe um CPF com 11 números.');
-            if (data.beneficiaries.some(item => item.cpf === cpf)) return toast('Este CPF já possui cadastro. Entre na sua conta.');
-            const account = { id: id('benef'), name: String(values.get('name')).trim(), cpf, phone: String(values.get('phone')).trim(), password };
-            data.beneficiaries.push(account);
-            return createSession(type, account);
+            payload.name = String(values.get('name') || '').trim();
+            payload.phone = String(values.get('phone') || '').trim();
         }
-        const account = type === 'ong'
-            ? data.organizations.find(item => item.email.toLowerCase() === email && item.password === password)
-            : data.beneficiaries.find(item => item.cpf === digits(values.get('cpf')) && item.password === password);
-        if (!account) return toast('Dados não encontrados. Confira as informações e tente novamente.');
-        createSession(type, account);
+    } else {
+        payload.email = String(values.get('email') || '').trim().toLowerCase();
     }
+
+    if (register && password.length < 6) {
+        return toast('A senha precisa ter pelo menos 6 caracteres.');
+    }
+
+    if (register && type === 'beneficiary' && payload.cpf.length !== 11) {
+        return toast('Informe um CPF com 11 números.');
+    }
+
+    const endpoint = register && type === 'beneficiary'
+        ? 'register/beneficiary'
+        : 'login';
+
+    try {
+        const response = await fetch(
+            `http://127.0.0.1:5000/api/auth/${endpoint}`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            return toast(result.message || result.error || 'Não foi possível realizar o acesso.');
+        }
+
+        localStorage.setItem('conecta_api_token', result.token);
+
+        toast(register ? 'Cadastro realizado com sucesso!' : 'Login realizado com sucesso!');
+
+        if (type === 'beneficiary') {
+            const next = new URLSearchParams(location.search).get('next') || 'catalogo.html';
+            location.href = next;
+        }
+    } catch (error) {
+        toast('Não foi possível conectar ao servidor Flask.');
+        console.error(error);
+    }
+}
+
     function initAuth(type) {
         let mode = 'login';
         const form = type === 'ong' ? $('#ong-form') : $('#benef-form');
