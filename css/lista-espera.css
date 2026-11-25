@@ -1,0 +1,27 @@
+.queue-position {
+    display: grid;
+    flex: none;
+    justify-items: end;
+    color: var(--deep);
+}
+
+.queue-position strong {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.queue-position span {
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.queue-position small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 8px;
+}
+
+@media (max-width: 480px) {.queue-position {
+        justify-items: start;
+    }
+}
