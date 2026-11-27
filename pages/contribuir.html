@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribuir com alimentos | ConectaDoações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/workspace.css">
+    <link rel="stylesheet" href="../css/contribuir.css">
+</head>
+
+<body data-area="contribute" class="min-h-screen antialiased">
+    <header class="workspace-header">
+        <a class="brand" href="../index.html"><span class="brand-mark brand-symbol">♥</span><span
+                class="brand-copy"><strong>ConectaDoações</strong><small>ESPAÇO DO BENEFICIÁRIO</small></span></a>
+        <nav class="workspace-nav">
+            <a href="../index.html">Portal</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="pedidos.html">Meus pedidos</a>
+            <a href="lista-espera.html">Lista de espera</a>
+            <a href="contribuir.html" aria-current="page">Doar alimentos</a>
+        </nav>
+        <div class="workspace-user">
+            <span id="account-name"></span>
+            <button id="logout-button" class="button-quiet hidden">Sair</button>
+        </div>
+    </header>
+
+    <main class="workspace-main">
+        <section class="workspace-heading">
+            <div>
+                <p class="eyebrow">SOLIDARIEDADE EM MOVIMENTO</p>
+                <h1>Contribua com alimentos</h1>
+                <p>Compartilhe alimentos com uma instituição e ajude a fortalecer a rede de cuidado.</p>
+            </div>
+        </section>
+
+        <div class="contribution-layout">
+            <section class="workspace-form-wrap">
+                <p class="eyebrow">NOVA CONTRIBUIÇÃO</p>
+                <h2>O que você gostaria de doar?</h2>
+                <p class="form-hint">A ONG escolhida verá sua contribuição e poderá confirmar o recebimento.</p>
+                <form id="contribution-form" class="form-stack">
+                    <div class="field">
+                        <label for="food-name">Alimento</label>
+                        <input id="food-name" name="foodName" type="text" required maxlength="100"
+                            placeholder="Ex.: arroz, feijão ou leite">
+                    </div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="food-quantity">Quantidade</label>
+                            <input id="food-quantity" name="quantity" type="number" min="0.1" step="0.1" required
+                                placeholder="Ex.: 2">
+                        </div>
+                        <div class="field">
+                            <label for="food-unit">Unidade</label>
+                            <select id="food-unit" name="unit" required>
+                                <option value="kg">Quilos (kg)</option>
+                                <option value="unidades">Unidades</option>
+                                <option value="pacotes">Pacotes</option>
+                                <option value="litros">Litros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="organization">ONG que receberá</label>
+                        <select id="organization" name="organizationId" required>
+                            <option value="">Carregando instituições...</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="contribution-note">Observação (opcional)</label>
+                        <textarea id="contribution-note" name="note" maxlength="300"
+                            placeholder="Ex.: alimentos dentro da validade"></textarea>
+                    </div>
+                    <button class="form-submit" type="submit">Registrar contribuição</button>
+                </form>
+            </section>
+
+            <section class="contribution-history">
+                <div class="workspace-section-title">
+                    <h2>Minhas contribuições</h2>
+                </div>
+                <div id="contribution-list" class="workspace-list"></div>
+            </section>
+        </div>
+    </main>
+
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
+    <script src="../scripts/area-core.js"></script>
+    <script src="../scripts/contribuir.js"></script>
+</body>
+
+</html>

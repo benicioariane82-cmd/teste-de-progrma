@@ -11,6 +11,8 @@
             form.innerHTML = register
                 ? `<div class="field"><label for="auth-name">Nome da instituição</label><input id="auth-name" name="name" required></div>
                    <div class="form-grid"><div class="field"><label for="auth-cnpj">CNPJ</label><input id="auth-cnpj" name="cnpj" inputmode="numeric" maxlength="14" required></div><div class="field"><label for="auth-city">Cidade / Bairro</label><input id="auth-city" name="city" required></div></div>
+                   <div class="field"><label for="auth-pickup-location">Endereço/local de retirada</label><input id="auth-pickup-location" name="pickupLocation" required maxlength="180" placeholder="Rua, número, bairro e cidade"></div>
+                   <div class="field"><label for="auth-description">Descrição da instituição</label><textarea id="auth-description" name="description" required maxlength="500" placeholder="Conte sobre o trabalho da ONG e quem ela atende"></textarea></div>
                    <div class="field"><label for="auth-email">E-mail</label><input id="auth-email" name="email" type="email" required></div><div class="field"><label for="auth-password">Senha</label><input id="auth-password" name="password" type="password" minlength="6" required></div><button class="form-submit">Cadastrar instituição</button>`
                 : `<div class="field"><label for="auth-email">E-mail da instituição</label><input id="auth-email" name="email" type="email" required></div><div class="field"><label for="auth-password">Senha</label><input id="auth-password" name="password" type="password" required></div><button class="form-submit">Entrar no painel</button>`;
         } else {
@@ -41,9 +43,10 @@
                 name: String(values.get('name')).trim(),
                 cnpj,
                 city: String(values.get('city')).trim(),
+                pickupLocation: String(values.get('pickupLocation')).trim(),
                 email,
                 password,
-                description: 'Uma iniciativa local que fortalece a rede de cuidado da comunidade.',
+                description: String(values.get('description')).trim(),
                 image: photos.community
             };
             data.organizations.push(account);

@@ -109,6 +109,10 @@
     padding: 0 18px;
 }
 
+.workspace-product-description {
+    grid-column: 1 / -2;
+}
+
 .validation-form {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -139,6 +143,10 @@
 .workspace-product-form {
         grid-template-columns: 1fr 1fr;
     }
+
+.workspace-product-description {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 480px) {
@@ -150,5 +158,9 @@
     .workspace-product-form .form-submit,
     .validation-form .form-submit {
         width: 100%;
+    }
+
+    .workspace-product-description {
+        grid-column: 1;
     }
 }

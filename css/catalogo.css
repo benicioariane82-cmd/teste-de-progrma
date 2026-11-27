@@ -76,9 +76,12 @@
 
 .product-art {
     position: relative;
-    height: 130px;
+    height: 96px;
+    margin: 10px 0;
+    overflow: hidden;
     display: grid;
     place-items: center;
+    border-radius: 12px;
     background: linear-gradient(140deg, #E8F3EE, #F5FAF7);
     font-size: 48px;
 }
@@ -107,6 +110,8 @@
 }
 
 .product-info {
+    display: flex;
+    flex-direction: column;
     padding: 14px;
 }
 
@@ -118,10 +123,35 @@
     line-height: 1.45;
 }
 
+.product-description {
+    margin: 7px 0;
+    color: #5E7166;
+    font-size: 9px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
 .product-org {
     margin: 7px 0;
     color: #76867D;
     font-size: 9px;
+}
+
+.product-organization-details {
+    display: grid;
+    gap: 6px;
+    margin: 9px 0;
+    color: #5E7166;
+    font-size: 9px;
+    line-height: 1.55;
+}
+
+.product-organization-details p {
+    margin: 0;
+}
+
+.product-organization-details strong {
+    color: var(--deep);
 }
 
 .product-stock {
@@ -188,7 +218,7 @@
     }
 
 .product-art {
-        height: 155px;
+        height: 100px;
     }
 }
 
