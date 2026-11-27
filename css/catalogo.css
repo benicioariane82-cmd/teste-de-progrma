@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 .catalog-heading {
     align-items: flex-end;
+=======
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --green: #246b55;
+    --green-dark: #195541;
+    --ink: #17352d;
+    --muted: #63766d;
+    --line: #dbe7de;
+    --soft: #edf4ee;
+    --white: rgba(255,255,255,.9);
+    --rose: #a75b55;
+>>>>>>> d82ffaf70a6696006ed10a25b0c2ad868f606b3d
 }
 
 .section-description {
@@ -8,10 +22,38 @@
     font-size: 11px;
 }
 
+<<<<<<< HEAD
 .search-field {
     width: min(260px, 100%);
     height: 43px;
     padding: 0 13px;
+=======
+body {
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: 'DM Sans', Arial, sans-serif;
+    line-height: 1.6;
+    background: radial-gradient(circle at 8% 10%, #fffdf7 0 10%, transparent 30%),
+        radial-gradient(circle at 94% 90%, #d5e7da 0 10%, transparent 30%),
+        var(--soft);
+    padding-bottom: 60px;
+}
+
+header {
+    background: rgba(255,255,255,.82);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 0;
+    backdrop-filter: blur(12px);
+}
+
+.nav-container,
+.container {
+    width: min(92%, 1180px);
+    margin: 0 auto;
+}
+
+.nav-container {
+>>>>>>> d82ffaf70a6696006ed10a25b0c2ad868f606b3d
     display: flex;
     align-items: center;
     gap: 8px;
@@ -154,7 +196,53 @@
     color: var(--deep);
 }
 
+<<<<<<< HEAD
 .product-stock {
+=======
+.card-vazio,
+.catalog-item,
+.voucher-box {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(32,75,56,.07);
+}
+
+.card-vazio {
+    padding: 1.6rem;
+    text-align: center;
+}
+
+.catalog-item {
+    display: grid;
+    gap: 12px;
+    padding: 1.45rem;
+    margin-bottom: 1rem;
+}
+
+.category {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 7px;
+    padding: .28rem .58rem;
+    color: var(--rose);
+    background: #f7e5e1;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.catalog-item h4 {
+    font-size: 1.16rem;
+    line-height: 1.25;
+}
+
+.item-meta {
+    font-size: .9rem;
+}
+
+.item-footer {
+>>>>>>> d82ffaf70a6696006ed10a25b0c2ad868f606b3d
     display: flex;
     justify-content: space-between;
     gap: 8px;
@@ -254,8 +342,11 @@
         width: 100%;
     }
 }
+<<<<<<< HEAD
 
 @media (max-width: 480px) {.workspace-products {
         grid-template-columns: 1fr;
     }
 }
+=======
+>>>>>>> d82ffaf70a6696006ed10a25b0c2ad868f606b3d
